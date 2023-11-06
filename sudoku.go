@@ -13,7 +13,7 @@ func main() {
 		fmt.Println("Error: Invalid number of rows.")
 		return
 	}
-    // Create a sudoku board from the command line args
+	// Create a sudoku board from the command line args
 	board := make([][]int, N)
 	for i := range board {
 		board[i] = make([]int, N)
