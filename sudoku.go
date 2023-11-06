@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/01-edu/z01"
+	"fmt"
 	"os"
 )
 
@@ -10,12 +10,7 @@ const N = 9
 
 func main() {
 	if len(os.Args) != N+1 {
-		z01.PrintRune('E')
-		z01.PrintRune('r')
-		z01.PrintRune('r')
-		z01.PrintRune('o')
-		z01.PrintRune('r')
-		z01.PrintRune('\n')
+		fmt.Println("Error: Invalid number of rows.")
 		return
 	}
 
@@ -26,12 +21,7 @@ func main() {
 
 	for i := 1; i <= N; i++ {
 		if len(os.Args[i]) != N {
-			z01.PrintRune('E')
-			z01.PrintRune('r')
-			z01.PrintRune('r')
-			z01.PrintRune('o')
-			z01.PrintRune('r')
-			z01.PrintRune('\n')
+			fmt.Println("Error: Row length should be 9.")
 			return
 		}
 		for j := 0; j < N; j++ {
@@ -40,13 +30,7 @@ func main() {
 			} else if os.Args[i][j] >= '1' && os.Args[i][j] <= '9' {
 				board[i-1][j] = int(os.Args[i][j] - '0')
 			} else {
-				z01.PrintRune('E')
-				z01.PrintRune('r')
-				z01.PrintRune('r')
-				z01.PrintRune('o')
-				z01.PrintRune('r')
-				z01.PrintRune('\n')
-
+				fmt.Println("Error: Invalid characters in the input.")
 				return
 			}
 		}
@@ -55,13 +39,7 @@ func main() {
 	if solveSudoku(board) {
 		printBoard(board)
 	} else {
-		z01.PrintRune('E')
-		z01.PrintRune('r')
-		z01.PrintRune('r')
-		z01.PrintRune('o')
-		z01.PrintRune('r')
-		z01.PrintRune('\n')
-
+		fmt.Println("Error: No solution found.")
 	}
 }
 
@@ -145,14 +123,14 @@ func usedInBox(board [][]int, startRow, startCol, num int) bool {
 func printBoard(board [][]int) {
 	for i := 0; i < N; i++ {
 		for j := 0; j < N; j++ {
-			z01.PrintRune(rune(board[i][j] + '0'))
+			fmt.Printf("%d", board[i][j])
 			if j < N-1 {
-				z01.PrintRune(' ')
-
+				fmt.Print(" ")
 			}
 		}
-		z01.PrintRune('\n')
+
+		fmt.Println()
 
 	}
-	z01.PrintRune('\n')
+	fmt.Println()
 }
