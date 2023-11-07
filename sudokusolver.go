@@ -60,7 +60,6 @@ func main() {
 func getNextEmpty(board [][]rune) (int, int, error) {
 	for j := 0; j < 9; j++ {
 		for i := 0; i < 9; i++ {
-
 			if board[j][i] == '.' {
 				return j, i, nil
 			}
@@ -71,7 +70,6 @@ func getNextEmpty(board [][]rune) (int, int, error) {
 }
 
 func isValidBoard(board [][]rune) bool {
-
 	for i := 0; i < 9; i++ {
 
 		rowSet := make(map[rune]bool)
@@ -96,7 +94,6 @@ func isValidBoard(board [][]rune) bool {
 	}
 
 	for i := 0; i < 9; i += 3 {
-
 		for j := 0; j < 9; j += 3 {
 			gridSet := make(map[rune]bool)
 			for x := i; x < i+3; x++ {
