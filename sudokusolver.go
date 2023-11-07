@@ -57,11 +57,11 @@ func main() {
 	}
 }
 
-func getNextEmpty(sudoku [][]rune) (int, int, error) {
+func getNextEmpty(board [][]rune) (int, int, error) {
 	for j := 0; j < 9; j++ {
 		for i := 0; i < 9; i++ {
 
-			if sudoku[j][i] == '.' {
+			if board[j][i] == '.' {
 				return j, i, nil
 			}
 		}
@@ -70,27 +70,27 @@ func getNextEmpty(sudoku [][]rune) (int, int, error) {
 	return 0, 0, errors.New("Error")
 }
 
-func isValidBoard(sudoku [][]rune) bool {
+func isValidBoard(board [][]rune) bool {
 
 	for i := 0; i < 9; i++ {
 
 		rowSet := make(map[rune]bool)
 		colSet := make(map[rune]bool)
 		for j := 0; j < 9; j++ {
-			if sudoku[i][j] != '.' {
-				if rowSet[sudoku[i][j]] {
+			if board[i][j] != '.' {
+				if rowSet[board[i][j]] {
 					return false
 				}
 
-				rowSet[sudoku[i][j]] = true
+				rowSet[board[i][j]] = true
 			}
-			if sudoku[j][i] != '.' {
+			if board[j][i] != '.' {
 
-				if colSet[sudoku[j][i]] {
+				if colSet[board[j][i]] {
 					return false
 				}
 
-				colSet[sudoku[j][i]] = true
+				colSet[board[j][i]] = true
 			}
 		}
 	}
@@ -101,11 +101,11 @@ func isValidBoard(sudoku [][]rune) bool {
 			gridSet := make(map[rune]bool)
 			for x := i; x < i+3; x++ {
 				for y := j; y < j+3; y++ {
-					if sudoku[x][y] != '.' {
-						if gridSet[sudoku[x][y]] {
+					if board[x][y] != '.' {
+						if gridSet[board[x][y]] {
 							return false
 						}
-						gridSet[sudoku[x][y]] = true
+						gridSet[board[x][y]] = true
 					}
 				}
 			}
